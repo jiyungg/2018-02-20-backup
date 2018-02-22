@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+ <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -186,7 +186,7 @@ dhtmlxEvent(window,"load",function(){
 	form.attachEvent("onButtonClick",function(id){
 		if(id=="saveBtn"){
 			if(form.validate()){
-				form.send("${root}/connection/insert", "post",addConnectionCB); // root = contextPath
+				form.send("${root}/connection/insert", "post", addConnectionCB); // root = contextPath
 			}
 		}else if(id=="cancelBtn"){
 			form.clear();

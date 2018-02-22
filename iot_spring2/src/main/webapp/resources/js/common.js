@@ -13,7 +13,7 @@ var AjaxUtilDx = function (url, dxObj, type, dataType){
 	if(dxObj && dxObj instanceof window.dhtmlXForm){
 		var value = dxObj.getFormData();
 		this.param = JSON.stringify(value);
-	}else if(dxObj && dxObj instanceof dhtmlXGridObject ){
+	}else if(dxObj && dxObj instanceof dhtmlXGridObject){
 		var rowId = dxObj.getSelectedRowId();
 		var colCnt = dxObj.getColumnCount();
 		for(var i=0;i<colCnt;i++){

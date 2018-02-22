@@ -30,9 +30,9 @@ public class ConnectionInfoController {
 	@Autowired
 	private ConnectionInfoService cis;
 	@RequestMapping("/list")
-	public @ResponseBody Map<String,Object> getConnectionList(HttpSession hs,Map<String,Object>map){
-		UserInfoVO ui = new UserInfoVO();
-		if(hs.getAttribute("user")!=null) {
+	public @ResponseBody Map<String,Object> getConnectionList(HttpSession hs,Map<String,Object>map){ // 데이터 객체가 HttpSession으로 들어오고, 데이터를 넘길 객체. (여기서 map)
+		UserInfoVO ui = new UserInfoVO();                                                            // 여기서 map의 위치가, model의 역할을 하는 것이다! 
+		if(hs.getAttribute("user")!=null) {                                                          // model은 view 쪽으로 데이터를 넘기는 역할을 한다.
 			ui = (UserInfoVO)hs.getAttribute("user");
 		}else {
 			ui.setUiId("red");
@@ -44,8 +44,7 @@ public class ConnectionInfoController {
 
 
 	@RequestMapping(value="/db_list/{ciNo}", method=RequestMethod.GET)
-	public @ResponseBody Map<String,Object> getDatabaseList(@PathVariable("ciNo") int ciNo,
-			Map<String,Object> map,HttpSession hs) {
+	public @ResponseBody Map<String,Object> getDatabaseList(@PathVariable("ciNo") int ciNo, Map<String,Object> map,HttpSession hs) {
 		List<Map<String, Object>> dbList;
 		try {
 			dbList = cis.getDatabaseList(hs, ciNo);
@@ -65,7 +64,7 @@ public class ConnectionInfoController {
 		return map;
 	}
 	@RequestMapping(value="/tables/{dbName}/{parentId}", method=RequestMethod.GET)
-	public @ResponseBody Map<String,Object> getTabeList(
+	public @ResponseBody Map<String,Object> getTableList(
 			@PathVariable("dbName")String dbName, 
 			@PathVariable("parentId")String parentId,
 			HttpSession hs,
@@ -93,6 +92,6 @@ public class ConnectionInfoController {
 	public @ResponseBody Map<String,Object> getColumnList(Map<String,Object> map) {
 		//cis.getColumnList(hs, map)
 		return map;
-	}
+	} 
 
 }
